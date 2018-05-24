@@ -1,0 +1,129 @@
+body{
+    font-family: 'Questrial', sans-serif;
+    height:200em;
+    width:100%;
+    background: #ffffff;;
+}
+
+.decide-icon{
+    visibility: hidden;
+}
+@media screen and (max-width: 992px){ 
+    .decide-icon{
+        visibility: visible;
+    }      
+}
+.test{
+    background:#ffff;
+    height: 10em;
+}
+
+/* hearder styles */
+.header{
+    height:50px;
+    background:#039be5;
+}
+.logo3{
+    color:#039be5;
+    font-weight: bold;
+}
+
+.logo1{
+    font-family: inherit;
+    color:#ffff;
+    font-weight: bold;
+}
+.logo2{
+    font-family: inherit;
+    color:#FCCC32;
+}
+.logo{
+    text-align: center;
+    font-size: 30px;
+}
+.register{
+
+    text-align: left;
+
+
+}
+
+.loginbutton{
+    color:#ffff;
+    visibility: visible;
+    margin-left: 200px;    
+}
+
+.loginbutton1{
+    visibility: hidden;
+}
+@media screen and (max-width:779px){           
+    .loginbutton{
+        visibility: hidden;
+    }
+    .loginbutton1{
+        visibility: visible;
+        margin-top: -30px;
+    }
+
+}
+
+.login{
+    padding: 5px 0px 0px 0px; 
+    font-size: 10px;  
+    text-align: center;
+}
+@media screen and (max-width:728px){
+    .men{
+        margin-left:10px;
+        margin-top:5px;
+        max-width:30px;
+    }
+    .logo{
+        max-width: 200px;
+        margin-top:10px;
+        margin-left:50px;
+        text-align: center;
+        font-size: 20px;
+        
+    }
+    .login{
+        max-width:8px;
+        margin-right: 50px;
+        padding: 0px 0px 0px 0px; 
+        font-size: 10px;  
+        text-align: center;
+
+        
+    }
+
+    
+
+}
+
+
+
+/* left-pan styles */
+
+.bodysection{
+    margin-top: 80px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
