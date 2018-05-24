@@ -26,7 +26,9 @@
                       <span class="sr-only">o</span>dle</span><span class="logo2">Hub</span>
                     </a>
                 </div>
-            <div class="col login ">
+
+<!-- login section -->
+            <div class="col login changelogin ">
                 <a class="btn btn-primary btn-sm shadow loginbutton" data-toggle="modal" data-target="#exampleModalCenter" aria-label="Skip to main navigation">
                     <span class="logo1" >Login <span class="logo2">or</span> Register</span>
                 </a>
@@ -34,6 +36,9 @@
                         <i class="fa fa-sign-in logo2" aria-hidden="true"></i>
                 </a>
             </div>
+
+
+
         </div>
 <!-- modal code for loin -->
 
@@ -84,7 +89,7 @@
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                <a class="nav-link"  id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
                 </div>
             </div>
             <div class="col-md-1 "></div>
@@ -121,6 +126,8 @@
      messagingSenderId: "118239660738"
    };
    firebase.initializeApp(config);
+   // Get a reference to the database service
+  var database = firebase.database();
  // // Initialize the default app
  // var defaultApp = firebase.initializeApp(config);
 
@@ -136,8 +143,9 @@
 
 <!-- validation and data preparation -->
  <script>
+  
    document.querySelector('.signInForm').addEventListener('submit',(event)=> {
-     
+  
     event.preventDefault();
      // console.log(event);
     
@@ -162,27 +170,65 @@
      if(value == 'verified'){
         firebase.auth().signInWithEmailAndPassword(email, pwd0).catch(function(error) {
           // Handle Errors here.
-          var errorCode = error.code;
+          errorCode = error.code;
           var errorMessage = error.message;
           // [START_EXCLUDE]
           if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
+            alert('Wrong password.')
+            return;
           } else {
-            alert(errorMessage);
+            alert(errorMessage)
+            return;
           }
-          console.log(error);
+          // console.log(error);
         })
+
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
           // User is signed in.
-          alert("user signed in")
-          var displayName = user.displayName;
-          var email = user.email;
-          var emailVerified = user.emailVerified;
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
+          var uid = user.uid
+          var email = user.email
+          var emailVerified = user.emailVerified
+          var isAnonymous = user.isAnonymous
+          var ref = database.ref('/Users/' + uid)
+          var userinfo = null;
+          ref.on("value", function(snapshot) {
+            //console.log(snapshot.val());
+            userinfo = snapshot.val()
+
+            $("#exampleModalCenter").modal('hide')
+
+            let a = document.querySelector('.changelogin')
+            
+            a.innerHTML =  `<div class="">\
+            <button type="button" class="btn btn-primary btn-sm shadow loginbutton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\
+            Hi ${userinfo.username}\
+            </button><div class="dropdown-menu">\
+            <a class="dropdown-item" href="#">Action</a>\
+            <a class="dropdown-item" href="#">Another action</a>\
+            <a class="dropdown-item" href="#">Something else here</a>\
+            <div class="dropdown-divider"></div>\
+            <a class="dropdown-item" onclick="signOut()" >SignOut</a>\
+            </div></div> <a class="btn btn-primary btn-sm shadow loginbutton1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >\
+                        <i class="fa fa-sign-in logo2" aria-hidden="true"></i>\
+                </a>`
+          }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code)
+          })
+          
+          
+          // var displayName = user.username
+          // var email = user.email
+          // var emailVerified = user.emailVerified
+          // var isAnonymous = user.isAnonymous
+          // var uid = user.uid
+          // return firebase.database().ref('/Users/' + uid).then(function(userinfo) {
+          //   var username = userinfo.username
+          //   var photoURL = userinfo.profile_picture
+          //   console.log(username)
+          // })
+          // console.log(email, emailVerified, uid)
+          // alert("user signed in")
 
         }
 })
@@ -210,8 +256,9 @@
 
      return 'verified'
    }
-   
-   
+   function signOut(){
+   firebase.auth().signOut();
+   }
  
  </script>
 
