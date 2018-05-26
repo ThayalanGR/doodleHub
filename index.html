@@ -54,6 +54,7 @@
               </button>
             </div>
             <div class="modal-body">
+              <div class="modal-title" id="pushmessage"></div>
                     <form  class="signInForm">
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
@@ -69,7 +70,8 @@
                               <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
                             </div>
                             <button type="submit" class="btn btn-warning logo1">SignIn</button>
-                            <h6 class="register">New user ? <a href="./register.html" class="logo2">Register Here !</a></h6>
+                            <h6 class="register">New user ? <a href="./register.html" class="logo2 ">Register Here !</a></h6>
+                            <h6 class="register">Forgot Password ? Don't worry <a class="logo2 btn btn-outline-warning" onclick = "resetTemplate()">  Click Here !</a></h6>                            
                           </form>
             </div>
             <div class="modal-footer text-left">
@@ -83,7 +85,7 @@
 
         <!-- body section -->
 
-        <div class="row bodysection">
+        <!-- <div class="row bodysection">
             <div class="col-md-1 fixed-top bodysection ml-3 shadow">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
@@ -102,181 +104,36 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+  <!-- modal for processing -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title" id="messageModalLabel1"></div>
+          </div>
+          <div class="modal-body">
+              <div class="modal-body" id="messageModalLabel"></div>
+          </div>          
+        </div>
+      </div>
     </div>
- <!-- Firebase App is always required and must be first -->
- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
-
- <!-- firebase connection -->
- <!-- <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script> -->
-
- <!-- additional services -->
- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
- <!-- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script> -->
- <script>
-   // Initialize Firebase
-   var config = {
-     apiKey: "AIzaSyCX5LsEKMbnO6pdaf3BQAqBOsbctQ4U77I",
-     authDomain: "doodle-hub.firebaseapp.com",
-     databaseURL: "https://doodle-hub.firebaseio.com",
-     projectId: "doodle-hub",
-     storageBucket: "doodle-hub.appspot.com",
-     messagingSenderId: "118239660738"
-   };
-   firebase.initializeApp(config);
-   // Get a reference to the database service
-  var database = firebase.database();
- // // Initialize the default app
- // var defaultApp = firebase.initializeApp(config);
-
- // console.log(defaultApp.name);  // "[DEFAULT]"
-
- // // You can retrieve services via the defaultApp variable...
- // var defaultStorage = defaultApp.storage();
- // var defaultDatabase = defaultApp.database();
-
-
-
- </script>
-
-<!-- validation and data preparation -->
- <script>
   
-   document.querySelector('.signInForm').addEventListener('submit',(event)=> {
-  
-    event.preventDefault();
-     // console.log(event);
-    
-     let email = event.target.email.value
-     let pwd0 = event.target.pwd0.value
-     let check = event.target.check.value
-
-     
-     function clearForm(){
-       
-         event.target.email.value = ''
-
-         event.target.pwd0.value = ''
-
-         event.target.check.value = ''
-     }
-    
-     console.log(email, pwd0, check)
-     let value = '';
-     value = formValidation(email, pwd0)
-     console.log(value)
-     if(value == 'verified'){
-        firebase.auth().signInWithEmailAndPassword(email, pwd0).catch(function(error) {
-          // Handle Errors here.
-          errorCode = error.code;
-          var errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.')
-            return;
-          } else {
-            alert(errorMessage)
-            return;
-          }
-          // console.log(error);
-        })
-
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-          // User is signed in.
-          var uid = user.uid
-          var email = user.email
-          var emailVerified = user.emailVerified
-          var isAnonymous = user.isAnonymous
-          var ref = database.ref('/Users/' + uid)
-          var userinfo = null;
-          ref.on("value", function(snapshot) {
-            //console.log(snapshot.val());
-            userinfo = snapshot.val()
-
-            $("#exampleModalCenter").modal('hide')
-
-            let a = document.querySelector('.changelogin')
-            
-            a.innerHTML =  `<div class="">\
-            <button type="button" class="btn btn-primary btn-sm shadow loginbutton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\
-            Hi ${userinfo.username}\
-            </button><div class="dropdown-menu">\
-            <a class="dropdown-item" href="#">Action</a>\
-            <a class="dropdown-item" href="#">Another action</a>\
-            <a class="dropdown-item" href="#">Something else here</a>\
-            <div class="dropdown-divider"></div>\
-            <a class="dropdown-item" onclick="signOut()" >SignOut</a>\
-            </div></div> <a class="btn btn-primary btn-sm shadow loginbutton1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >\
-                        <i class="fa fa-sign-in logo2" aria-hidden="true"></i>\
-                </a>`
-          }, function (errorObject) {
-            console.log("The read failed: " + errorObject.code)
-          })
-          
-          
-          // var displayName = user.username
-          // var email = user.email
-          // var emailVerified = user.emailVerified
-          // var isAnonymous = user.isAnonymous
-          // var uid = user.uid
-          // return firebase.database().ref('/Users/' + uid).then(function(userinfo) {
-          //   var username = userinfo.username
-          //   var photoURL = userinfo.profile_picture
-          //   console.log(username)
-          // })
-          // console.log(email, emailVerified, uid)
-          // alert("user signed in")
-
-        }
-})
-        clearForm()
-        // alert('sign in success');
-}         
-     if(value == 'notverified'){
-         alert('something went wrong with form please ');
-     }
-   })// end of main function
-
-
-//another function
-
-
-   function formValidation(email, pwd0){
-        if (email.length < 4) {
-          alert('Please enter an email address.');
-          return 'notVerified';
-        }
-        if (pwd0.length < 4) {
-          alert('Please enter a password.');
-          return 'notVerified';
-        }
-
-     return 'verified'
-   }
-   function signOut(){
-   firebase.auth().signOut();
-   }
- 
- </script>
 
 
 
-
-    <!-- <script>
-        $('#myTab a').on('click', function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
-
-        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-        $('#myTab li:first-child a').tab('show') // Select first tab
-        $('#myTab li:last-child a').tab('show') // Select last tab
-        $('#myTab li:nth-child(3) a').tab('show') // Select third tab
-
-    </script> -->
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <!-- firebase connection -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script> -->
+    <!-- additional services -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script> -->
+    <script src="./script/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

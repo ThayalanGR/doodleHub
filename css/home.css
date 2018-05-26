@@ -8,7 +8,7 @@ body{
 .decide-icon{
     visibility: hidden;
 }
-@media screen and (max-width: 992px){ 
+@media screen and (max-width: 550px){ 
     .decide-icon{
         visibility: visible;
     }      
@@ -57,13 +57,13 @@ body{
 .loginbutton1{
     visibility: hidden;
 }
-@media screen and (max-width:779px){           
+@media screen and (max-width:728px){           
     .loginbutton{
         visibility: hidden;
     }
     .loginbutton1{
         visibility: visible;
-        margin-top: -30px;
+         margin-top: -30px;
     }
 
 }

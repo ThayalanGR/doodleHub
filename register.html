@@ -159,8 +159,8 @@
 
                               <div class="form-row">
                                   <div class="col mb-3">
-                                    <label for="status">Status</label>
-                                    <input type="text" class="form-control" name = "status" id="status" placeholder="info about you" required>
+                                    <label for="status">Mobile Number</label>
+                                    <input type="text" class="form-control" name = "mobile" id="mobile" placeholder="Mobile" required>
                                     <div class="statusfeedback"></div>
                                   </div>
                                 </div>
@@ -201,281 +201,30 @@
   </div>
 </div>
 
+  <!-- modal for processing -->
+  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title mx-auto" id="messageModalLabel"></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
 
     <!-- Firebase App is always required and must be first -->
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
-
     <!-- firebase connection -->
     <!-- <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script> -->
-
     <!-- additional services -->
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script> -->
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCX5LsEKMbnO6pdaf3BQAqBOsbctQ4U77I",
-        authDomain: "doodle-hub.firebaseapp.com",
-        databaseURL: "https://doodle-hub.firebaseio.com",
-        projectId: "doodle-hub",
-        storageBucket: "doodle-hub.appspot.com",
-        messagingSenderId: "118239660738"
-      };
-      firebase.initializeApp(config);
-    // // Initialize the default app
-    // var defaultApp = firebase.initializeApp(config);
-
-    // console.log(defaultApp.name);  // "[DEFAULT]"
-
-    // // You can retrieve services via the defaultApp variable...
-    // var defaultStorage = defaultApp.storage();
-    // var defaultDatabase = defaultApp.database();
-
-
-
-    </script>
-
-<!-- validation and data preparation -->
-    <script>
-      document.querySelector('.signUpForm').addEventListener('submit',(event)=> {
-        event.preventDefault();
-        // console.log(event);
-        let fname = event.target.fname.value
-        let lname = event.target.lname.value
-        let email = event.target.email.value
-        let pwd0 = event.target.pwd0.value
-        let pwd1 = event.target.pwd1.value
-        let city = event.target.city.value
-        let college = event.target.college.value
-        let dob = event.target.dob.value
-        let status = event.target.status.value
-        let check = event.target.check.value
-
-        
-        function clearForm(){
-            event.target.fname.value = ''
-
-            event.target.lname.value = ''
-
-            event.target.email.value = ''
-
-            event.target.pwd0.value = ''
-
-            event.target.pwd1.value = ''
-
-            event.target.city.value = ''
-
-            event.target.college.value = ''
-            event.target.dob.value = ''
-
-            event.target.status.value = ''
-            event.target.check.value = ''
-        }
-       
-        // console.log(fname, lname, email, pwd0, pwd1, city, college, dob, status, check)
-        let value = '';
-        value = formValidation(fname, lname, email, pwd0, pwd1, city, college, dob, status, check)
-        // console.log(value)
-        if(value == 'verified'){
-          //send email and password to firebase authentication system
-            firebase.auth().createUserWithEmailAndPassword(email, pwd0).catch(function(error) {
-              // Handle Errors here.
-              var errorCode = error.code
-              var errorMessage = error.message
-              // [START_EXCLUDE]
-              if (errorCode == 'auth/weak-password') {
-                let feedBack = document.querySelector('.pwd0feedback')
-                let feedBack1 = document.querySelector('.pwd1feedback')
-                feedBack.textContent = ' The password is too weak.'
-                feedBack1.textContent = ' The password is too weak.'
-              } else {
-                // alert(errorMessage)
-                let feedBack = document.querySelector('.errorMessage')
-                feedBack.textContent = errorMessage
-              }
-              // console.log(error)
-              // [END_EXCLUDE]
-            })
-           
-          firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              // User is signed in.
-              var userId = user.uid
-
-              // console.log(userId)
-              //send data to firebase database
-              // Get a reference to the database service
-              var database = firebase.database();
-              // pushing data into database
-              var name = fname + ' ' + lname 
-              let imageUrl = 'default'
-              writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, status)
-
-              function writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, status) {
-                // console.log(userId);
-                firebase.database().ref('Users/' + userId).set({
-                  username: name,
-                  email: email,
-                  profile_picture : imageUrl,
-                  password : pwd0,
-                  city : city,
-                  dob : dob,
-                  college : college,
-                  status : status
-                });
-              }
-              sendEmailVerification()
-            //send email cerification
-            function sendEmailVerification() {
-              // [START sendemailverification]
-              firebase.auth().currentUser.sendEmailVerification().then(function() {
-                // Email Verification sent!
-                // [START_EXCLUDE]
-                
-                let feedBack1 = document.querySelector('.errorMessage')
-                feedBack1.textContent = ''
-                // let feedBack = document.querySelector('.message')
-                // feedBack.innerHTML = 'Account successfully created, please check your email id for verification <a class = "btn btn-link" href="./index.html">click here!</a> to go to doodleHub home page.'
-                $("#exampleModalCenter").modal()
-                // alert('Email Verification Sent!');
-                // [END_EXCLUDE]
-              });
-              // [END sendemailverification]
-            }
-         
-
-
-
-             // ...
-            } else {
-              // User is signed out.
-              // ...
-            }
-          });
-          //getting user id from authentication server
-          // if (firebase.auth().currentUser !== null) 
-          //   console.log("user id: " + firebase.auth().currentUser.uid);
-
-          // clearing the text fields after updating to the firebase authentication and database system
-          clearForm()
-
-          //else part for main functon
-        }
-        
-        if(value == 'notverified'){
-          let feedBack = document.querySelector('.errorMessage')
-            feedBack.textContent = 'something wrong with form please check the details'
-        }      })// end of main function
-
-
-//another function
-
-
-      function formValidation(fname, lname, email, pwd0, pwd1, city, college, dob, status, check){
-        //firsdtname and lastname validation
-        if(fname.length < 3 || lname.length < 1 || fname == null || lname == null ||  fname == undefined || lname == undefined){
-          let feedBack = document.querySelector('.fnamefeedback')
-          let feedBack1 = document.querySelector('.lnamefeedback')
-          feedBack.textContent = ' Looks bad! ';
-          feedBack1.textContent = ' Looks bad! ';
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.fnamefeedback')
-          let feedBack1 = document.querySelector('.lnamefeedback')
-          feedBack.textContent = ' Looks good! ';
-          feedBack1.textContent = ' Looks good! ';
-        }
-
-         if(email.length < 5 || email == null || email == undefined || email == ''){
-          let feedBack = document.querySelector('.emailfeedback')
-          feedBack.textContent = 'Please enter valid email-id for authentication'
-          event.stopPropagation();
-          return 'notverified'
-        }
-        else{
-          let feedBack = document.querySelector('.emailfeedback')
-          feedBack.textContent = 'looks good!'
-        }
-        
-        // passwordvalidation
-
-        if(pwd0.length != pwd1.length || pwd0.length < 6 || pwd0 != pwd1 ){
-          let feedBack = document.querySelector('.pwd0feedback')
-          let feedBack1 = document.querySelector('.pwd1feedback')
-          feedBack.textContent = ' Looks bad! ';
-          feedBack1.textContent = ' Looks bad! ';
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.pwd0feedback')
-          let feedBack1 = document.querySelector('.pwd1feedback')
-          feedBack.textContent = ' Looks good! ';
-          feedBack1.textContent = ' Looks good! ';
-        }
-
-     
-        if(city.length < 3 || city == null || city == undefined ){
-          let feedBack = document.querySelector('.cityfeedback')
-          feedBack.textContent = 'Please enter valid city'
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.cityfeedback')
-          feedBack.textContent = 'looks good !'
-          
-
-        }
-        
-        if(college.length < 3 || college == null || college == undefined ){
-          let feedBack = document.querySelector('.collegefeedback')
-          feedBack.textContent = 'Please enter valid college name'
-          event.stopPropagation();
-          return 'notverified'
-
-        }else{
-          let feedBack = document.querySelector('.collegefeedback')
-          feedBack.textContent = 'looks good !'
-
-        }
-        if(dob == null || dob == undefined || dob == ''){
-          let feedBack = document.querySelector('.dobfeedback')
-          feedBack.textContent = 'Please fill-out dob coloumn'
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.dobfeedback')
-          feedBack.textContent = 'looks good!'
-        }
-
-        if(status.length < 3 || status == null || status == undefined || status == ''){
-          let feedBack = document.querySelector('.statusfeedback')
-          feedBack.textContent = 'Please fill out some information about you like your interseted fields , domains etc.,'
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.statusfeedback')
-          feedBack.textContent = 'looks good!'
-        }
-        if(check != 'checked' || check == null || check == undefined){
-          let feedBack = document.querySelector('.checkfeedback')
-          feedBack.textContent = 'You must agree before submitting.'
-          event.stopPropagation();
-          return 'notverified'
-        }else{
-          let feedBack = document.querySelector('.checkfeedback')
-          feedBack.textContent = 'form validation success!'
-        }
-        return 'verified'
-      }
-      
-      
-    
-    </script>
- 
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-functions.js"></script> --> 
+    <script src="./script/register.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
