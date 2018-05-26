@@ -14,7 +14,11 @@ body{
     }      
 }
 .test{
-    background:#ffff;
+    background: rgb(160, 63, 63);
+    height: 50em;
+}
+.test1{
+    background:rgb(80, 73, 73);
     height: 10em;
 }
 
@@ -32,6 +36,10 @@ body{
     font-family: inherit;
     color:#ffff;
     font-weight: bold;
+}
+.logo4{
+    font-family: inherit;
+    color:rgb(255, 255, 255);
 }
 .logo2{
     font-family: inherit;
@@ -106,7 +114,7 @@ body{
 /* left-pan styles */
 
 .bodysection{
-    margin-top: 80px;
+    margin-top: 70px;
 
 }
 
