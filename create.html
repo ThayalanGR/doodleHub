@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>doodleHub</title>
+    <script src="https://use.fontawesome.com/0e2c340454.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+        <div class="container-fluid">
+
+                <!-- ******************Authentication work completed including Header Work****************************** -->
+                <!--verified hearder section -->
+                <div class="row header shadow fixed-top justify-content-around">
+                  <!-- <div class=" col  men">
+                                    <a class="btn btn-primary btn-sm shadow  decide-icon" href="#navigation-main" aria-label="Skip to main navigation">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                    </a>
+                  </div> -->
+                  <div class="col text-right mt-2 ml-2 clear-fix logo2 logo1">
+                      <div class="float-left ">
+                          <span><a href="personal-profile.html" title="Profile"><span class="hidden-xs hidden-sm logo1 btn btn-link btn-sm">Profile</span> </a>
+                          </span>
+                      </div>
+                      <div class="float-left ml-1">
+                          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm logo1 btn btn-link btn-sm">Wall</span> </a>
+                          </span>
+                      </div>
+                      <div class="float-left ml-1">
+                          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm logo1 btn btn-link btn-sm">Wall</span> </a>
+                          </span>
+                      </div>
+                      <div class="float-left ml-1">
+                          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm logo1 btn btn-link btn-sm">Wall</span> </a>
+                          </span>
+                      </div>
+                      <div class="float-left ml-1">
+                          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm logo1 btn btn-link btn-sm">Wall</span> </a>
+                          </span>
+                      </div>
+                  </div>
+            
+            
+            
+                  <div class="col logo align-content-center">
+                          <a style="text-decoration: none;" href="./index.html">
+                            <span class="logo1">d<i class="fa fa-cog fa-spin fa-1x" aria-hidden="true"></i>
+                            <span class="sr-only">o</span><i class="fa fa-cog fa-spin fa-1x" aria-hidden="true"></i>
+                            <span class="sr-only">o</span>dle</span><span class="logo2">Hub</span>
+                          </a>
+                  </div>
+                    <!-- login section -->
+                  <div class="col login changelogin ">
+                      <a class="btn btn-primary btn-sm shadow loginbutton" data-toggle="modal" data-target="#exampleModalCenter" aria-label="Skip to main navigation">
+                          <span class="logo1" >Login <span class="logo2">or</span> Register</span>
+                      </a>
+                      <a class="btn btn-primary btn-sm shadow loginbutton1" data-toggle="modal" data-target="#exampleModalCenter" aria-label="Skip to main navigation" aria-label="Skip to main navigation">
+                              <i class="fa fa-sign-in logo2" aria-hidden="true"></i>
+                      </a>
+                  </div>
+                </div>
+                <!--Main login  Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" >
+                        <h6 class="modal-title" id="exampleModalCenterTitle"><span class="logo1 logo2">Sign</span><span class="logo2">In</span></h6>
+                        <h6 class="modal-title register ml-2" id="exampleModalCenterTitle">or New user ? <a href="./register.html" class="logo2">Register Here !</a></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="modal-title" id="pushmessage"></div>
+                        <form  class="signInForm">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                              <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name = "pwd0" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              </div>
+                              <div class="form-group form-check">
+                                <input name = "check" type="checkbox" value = "checked" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
+                              </div>
+                              <button type="submit" class="btn btn-warning logo1">SignIn</button>
+                              <h6 class="register">New user ? <a href="./register.html" class="logo2 ">Register Here !</a></h6>
+                              <h6 class="register">Forgot Password ? Don't worry <a class="logo2 btn btn-outline-warning" onclick = "resetTemplate()">  Click Here !</a></h6>                            
+                        </form>
+                      </div>
+                      <div class="modal-footer text-left">
+                        <button type="button" class="btn btn-link btn-outline-warning" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--verified modal for processing -->
+                <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <div class="modal-title" id="messageModalLabel1"></div>
+                      </div>
+                      <div class="modal-body">
+                          <div class="modal-body" id="messageModalLabel"></div>
+                      </div>          
+                    </div>
+                  </div>
+                </div>
+                <!-- ******************Authentication work completed****************************** -->
+                
+                <!-- ******************Main Function work Started including Body Work****************************** -->
+            <div class="row justify-content-center">
+                <form action="" class="col" >
+                <div class="col bodysection ">
+                    <div class="row itemsheader justify-content-center">
+                        <p class="h2 logo1 logo2">Create Event</p>
+                    </div>
+                    <div class="row clear-fix">
+                        <div class="col-6 float-left" >
+                            <h4 class="logo3 text-center">Select the event place</h4>
+                            <div class="row">
+                                <input id="pac-input" class="controls form-control" type="text" placeholder=" Search Your Event Place here" required>
+                                <div id="map" class="rounded"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 float-left ">
+                            <h4 class="logo3 text-center">Event Details</h4>
+                            <div class="form-group">
+                                <label for="eventname" class="logo2">Event Name</label>
+                                <input type="text" class="form-control " id="eventname" placeholder="Name of your event">
+                            </div>
+                            <div class="form-group">
+                                <label for="eventcaption" class="logo2">Event Caption</label>
+                                <input type="text" class="form-control" id="eventcaption" placeholder="caption of your event">
+                            </div>
+                            <div class="form-group">
+                                    <label for="college" class="logo2">College Name or Event Place</label>
+                                    <input type="text" class="form-control" id="college" placeholder="Name of the organization(Event) ">
+                            </div>
+                            <div class="form-row">
+                                    <div class="col">
+                                        <label for="city" class="logo2">City</label>
+                                        <input type="text" class="form-control" name = "city" id="city" placeholder="Name of the city ">
+                                    </div>
+                                    <div class="col">
+                                        <label for="state" class="logo2">State</label>
+                                        <select id="state" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Andhra Pradesh (AP)</option>
+                                            <option>Arunachal Pradesh (AR)</option>
+                                            <option>Assam (AS)</option>
+                                            <option>Bihar (BR)</option>
+                                            <option>Chhattisgarh (CG)</option>
+                                            <option>Goa (GA)</option>
+                                            <option>Gujarat (GJ)</option>
+                                            <option>Haryana (HR)</option>
+                                            <option>Himachal Pradesh (HP)</option>
+                                            <option>Jammu and Kashmir (JK)</option>
+                                            <option>Jharkhand (JH)</option>
+                                            <option>Karnataka (KA)</option>
+                                            <option>Kerala (KL)</option>
+                                            <option>Madhya Pradesh (MP)</option>
+                                            <option>Maharashtra (MH)</option>
+                                            <option>Manipur (MN)</option>
+                                            <option>Meghalaya (ML)</option>
+                                            <option>Mizoram (MZ)</option>
+                                            <option>Nagaland (NL)</option>
+                                            <option>Odisha(OR)</option>
+                                            <option>Punjab (PB)</option>
+                                            <option>Rajasthan (RJ)</option>
+                                            <option>Sikkim (SK)</option>
+                                            <option>Tamil Nadu (TN)</option>
+                                            <option>Telangana (TS)</option>
+                                            <option>Tripura (TR)</option>
+                                            <option>Uttar Pradesh (UP)</option>
+                                            <option>Uttarakhand (UK)</option>
+                                            <option>West Bengal (WB)</option>
+                                            <option>Andaman and Nicobar Islands(AN)</option>
+                                            <option>Chandigarh (CH)</option>
+                                            <option>Dadra and Nagar Haveli (DN)</option>
+                                            <option>Daman and Diu (DD)</option>
+                                            <option>National Capital Territory of Delhi (DL)</option>
+                                            <option>Lakshadweep (LD)</option>
+                                            <option>Pondicherry (PY)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col">
+                                            <label for="country" class="logo2">Country</label>
+                                            <input type="text" class="form-control" name = "country" id="country" value="India">
+                                    </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="eventstart" class="logo2">Start Date</label>
+                                    <input type="date" class="form-control" name = "eventstart" id="eventstart" placeholder="Event starting date">
+                                </div>
+                                <div class="col">
+                                    <label for="eventend" class="logo2">End Date</label>
+                                    <input type="date" class="form-control" name = "eventend" id="eventend" placeholder="Event ending date">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-3 form-control">
+                        <div class="row justify-content-center"><label class="label logo1 logo2 ">Event Type <span class="h6">(choose the types of your event belongs to) (you can choose multiple event types)</span></label></div>
+                    <div class="row"><div class="col">
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Technical"><i></i>Technical</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Cultural"><i></i>Cultural</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Management"><i></i>Management</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Sports"><i></i>Sports</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Literary"><i></i>Literary</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Training"><i></i>Trainings</label>
+                        </div>
+                        <div class="col">
+                            
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Conference"><i></i>Conferences</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Seminar"><i></i>Seminar</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Workshop"><i></i>Workshop</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Symposium"><i></i>Symposium</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Youth Summit"><i></i>Youth Summit</label>
+                        </div>
+                        <div class="col">
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Model United Nations"><i></i>Model United Nations</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="TEDx"><i></i>TEDx</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Summit"><i></i>Summit</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Conclave"><i></i>Conclave</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Convention"><i></i>Convention</label>
+                        </div>
+                        <div class="col">
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Entrepreneurship Summit"><i></i>Entrepreneurship Summit</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Medical"><i></i>Medical</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Pharma"><i></i>Pharma</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Bio Medical"><i></i>Bio Medical</label>
+                            <label class="checkbox"><input type="checkbox" name="cbFestType[]" value="Online"><i></i>Online Events</label>
+                        </div></div>
+                    </div>
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="eventdescription" class="logo2">Event Discription</label>
+                                <textarea class="form-control" id="eventdescription" rows="3" placeholder="Enter Brief Description about your event and terms and conditions"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="workshop" class="logo2">WorkShops</label>
+                                <textarea class="form-control" id="workshop" rows="3" placeholder="Name the Workshops that you are going to conduct in your event leave this *(field)* blank if ther is no workshop in your event"></textarea>
+                            </div>
+                            <div class="form-row">
+                                    <div class="col">
+                                        <label for="deadline" class="logo2">Deadline Date for Registration</label>
+                                        <input type="date" class="form-control" name = "deadline" id="deadline" >
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                    <label for="eventlist" class="logo2">list Events here</label>
+                                    <textarea class="form-control" id="eventlist" rows="3" placeholder="enter the list of items like (1.rc quadcopter racing 2.paper-presentation 3.web-development ...etc.,)"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                    <label for="ppt" class="logo2">Paper Presentation topics</label>
+                                    <textarea class="form-control" id="ppt" rows="3" placeholder="Name the ppt and the related *(topics)* that you are going to conduct in your event leave this *(field)* blank if ther is no ppt in your event"></textarea> 
+                            </div>
+                            <div class="form-group">
+                                    <label for="registrationfee" class="logo1 logo2">Registration Fee (INR)</label>
+                                    <input type="number" class="form-control" id="registrationfee" name = "registrationfee" placeholder="enter registration amount in *(INR)*">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            </div>
+               
+               <!-- ******************Main Function work Started****************************** -->
+              </div>  
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <script src="./script/script.js"></script>
+    <script src="./script/create.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBauvTptxZ3JmZtyGFx-7DTffTuXG8Q490&libraries=places&callback=initAutocomplete"
+         async defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>

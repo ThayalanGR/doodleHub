@@ -7,15 +7,8 @@ var config = {
   projectId: "doodle-hub",
   storageBucket: "doodle-hub.appspot.com",
   messagingSenderId: "118239660738"
-};
+}
 firebase.initializeApp(config);
-// // Initialize the default app
-// var defaultApp = firebase.initializeApp(config);
-// console.log(defaultApp.name);  // "[DEFAULT]"
-// // You can retrieve services via the defaultApp variable...
-// var defaultStorage = defaultApp.storage();
-// var defaultDatabase = defaultApp.database();
-
 
 // <!-- validation and data preparation -->
 document.querySelector('.signUpForm').addEventListener('submit',(event)=> {

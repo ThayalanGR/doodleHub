@@ -9,12 +9,11 @@ var config = {
     messagingSenderId: "118239660738"
 };
 firebase.initializeApp(config);
-
 // Get a reference to the database service
 var database = firebase.database()
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        $(".changelogin").html(`<i class="fa fa-cog fa-3x fa-spin loginbutton"></i>`, ['center', 'info'])
+        $(".changelogin").html(`<i class="fa fa-cog fa-3x fa-spin loginbutton mr-4"></i>`, ['center', 'info'])
         // User is signed in.
         var uid = user.uid
         var email = user.email
@@ -22,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         var isAnonymous = user.isAnonymous
         var ref = database.ref('/Users/' + uid)
         var userinfo = null;
-        console.log(emailVerified)
+        // console.log(emailVerified)
         if(emailVerified){
             ref.on("value", function(snapshot) {
                                 //console.log(snapshot.val());
@@ -69,7 +68,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
     }else{
         let a = document.querySelector('.changelogin')
-
         a.innerHTML =  `<div class="col login changelogin ">\
                     <a class="btn btn-primary btn-sm shadow loginbutton" data-toggle="modal" data-target="#exampleModalCenter" aria-label="Skip to main navigation">\
                         <span class="logo1" >Login <span class="logo2">or</span> Register</span>\
@@ -78,8 +76,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                             <i class="fa fa-sign-in logo2" aria-hidden="true"></i>\
                     </a>\
                 </div>` 
-
-
     }
 })
 // <!-- validation and data preparation -->  
@@ -176,8 +172,6 @@ document.querySelector('.signInForm').addEventListener('submit',(event)=> {
          alert('something went wrong with form please ');
     }
 })// end of main function
-
-
 //form validation
 function formValidation(email, pwd0){
     if (email.length < 4) {
@@ -191,8 +185,7 @@ function formValidation(email, pwd0){
 
     return 'verified'
 }
-
-//    signout function
+//signout function
 function signOut(){
     $("#messageModalLabel").html(`<div class="mx-auto">please wait !</div><i class="fa fa-cog fa-spin"></i>`, ['center', 'info'])
     $("#messageModal").modal('show');
@@ -223,14 +216,10 @@ function resetTemplate(){
 }
 function sendPasswordReset() {
     var email = document.getElementById('resetformemail').value;
-    // [START sendpasswordemail]
     $("#messageModalLabel").html(`<div class="text-success">please wait!</div><br><i class="fa fa-cog fa-2x fa-spin"></i>`, ['center', 'info'])
     firebase.auth().sendPasswordResetEmail(email).then(function() {
-      // Password Reset Email Sent!
-      // [START_EXCLUDE]
       $("#messageModalLabel").html(`Password Reset Email Sent! please check your email-id <button type="button" class="btn btn-link btn-outline-warning" data-dismiss="modal">Close</button> `, ['center', 'info'])
-    //   alert('Password Reset Email Sent!');
-      // [END_EXCLUDE]
+ 
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -242,20 +231,12 @@ function sendPasswordReset() {
       <button class="btn btn-sm btn-block btn-warning logo1 " onclick="sendPasswordReset()">Submit</button>`, ['center', 'info'])
       if (errorCode == 'auth/invalid-email') {
         $("#messageModalLabel1").html(errorMessage, ['center', 'info'])
-//        alert(errorMessage);
       } else if (errorCode == 'auth/user-not-found') {
-  //      alert(errorMessage);
-  $("#messageModalLabel1").html(errorMessage, ['center', 'info'])
+        $("#messageModalLabel1").html(errorMessage, ['center', 'info'])
       }
-      //console.log(error);
-      // [END_EXCLUDE]
-    });
-    // [END sendpasswordemail];
-  }
-
-
+    })
+}
 //   resend email verification
-
 function resendVerification(){
     firebase.auth().onAuthStateChanged(function(user) {
         alert('ss')
@@ -269,4 +250,16 @@ function resendVerification(){
             })
         }
    })
+}
+function createEventRedirect(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var url = "../create.html"
+            window.location = url
+        }else{
+            $('#messageModalLabel').html(`Sorry you must be logged in to create the event. Please Login!.<button type="button" class="btn btn-link btn-outline-warning" data-dismiss="modal" onClick="$('#exampleModalCenter').modal('show')" >Login</button> `, ['center', 'info'])
+            $('#messageModal').modal('show')
+        }
+   })
+    
 }
