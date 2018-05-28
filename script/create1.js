@@ -1,18 +1,4 @@
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-    }else{
-        $('#messageModalLabel').html(`Sorry you must be logged in to create the event. Please Login!.`, ['center', 'info'])
-        $('#messageModal').modal('show')
-        setTimeout(function(){
-            var url = "../index.html"
-            window.location = url
-        },1500)
-    }
-})
-
-  function initAutocomplete() {
+function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 11.1271, lng: 78.6569},
       zoom: 13,

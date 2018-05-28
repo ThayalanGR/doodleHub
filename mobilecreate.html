@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>doodleHub</title>
+    <script src="https://use.fontawesome.com/0e2c340454.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-12">
+                        <div class="form-group ">
+                            <p class="h4 logo2 text-center">Create Event</p>
+                            <p class="logo3 text-center">Event Details</p>
+                            <label for="eventname" class=" logo2">Event Name</label>
+                            <input type="text" class="form-control input-sm" id="eventname" placeholder="Name of your event">
+                            <label for="eventcaption" class=" logo2">Event Caption</label>
+                            <input type="text" class="form-control" id="eventcaption" placeholder="caption of your event">
+                            <label for="college" class=" logo2">College Name or Place</label>
+                            <input type="text" class="form-control" id="college" placeholder="Name of the organization(Event) ">
+                            <label for="city" class=" logo2">City</label>
+                            <input type="text" class="form-control" name = "city" id="city" placeholder="Name of the city ">
+                            <label for="state" class=" logo2">State</label>
+                            <select id="state" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>Andhra Pradesh (AP)</option>
+                                <option>Arunachal Pradesh (AR)</option>
+                                <option>Assam (AS)</option>
+                                <option>Bihar (BR)</option>
+                                <option>Chhattisgarh (CG)</option>
+                                <option>Goa (GA)</option>
+                                <option>Gujarat (GJ)</option>
+                                <option>Haryana (HR)</option>
+                                <option>Himachal Pradesh (HP)</option>
+                                <option>Jammu and Kashmir (JK)</option>
+                                <option>Jharkhand (JH)</option>
+                                <option>Karnataka (KA)</option>
+                                <option>Kerala (KL)</option>
+                                <option>Madhya Pradesh (MP)</option>
+                                <option>Maharashtra (MH)</option>
+                                <option>Manipur (MN)</option>
+                                <option>Meghalaya (ML)</option>
+                                <option>Mizoram (MZ)</option>
+                                <option>Nagaland (NL)</option>
+                                <option>Odisha(OR)</option>
+                                <option>Punjab (PB)</option>
+                                <option>Rajasthan (RJ)</option>
+                                <option>Sikkim (SK)</option>
+                                <option>Tamil Nadu (TN)</option>
+                                <option>Telangana (TS)</option>
+                                <option>Tripura (TR)</option>
+                                <option>Uttar Pradesh (UP)</option>
+                                <option>Uttarakhand (UK)</option>
+                                <option>West Bengal (WB)</option>
+                                <option>Andaman and Nicobar Islands(AN)</option>
+                                <option>Chandigarh (CH)</option>
+                                <option>Dadra and Nagar Haveli (DN)</option>
+                                <option>Daman and Diu (DD)</option>
+                                <option>National Capital Territory of Delhi (DL)</option>
+                                <option>Lakshadweep (LD)</option>
+                                <option>Pondicherry (PY)</option>
+                            </select>
+                            <label for="country" class=" logo2">Country</label>
+                            <input type="text" class="form-control" name = "country" id="country" value="India">
+                            <label for="eventstart" class="logo2">Start Date</label>
+                            <input type="date" class="form-control" name = "eventstart" id="eventstart" placeholder="Event starting date">
+                            <label for="eventend" class=" logo2">End Date</label>
+                            <input type="date" class="form-control" name = "eventend" id="eventend" placeholder="Event ending date">
+                    </div>
+            </div>
+        </div>
+        <div class="row form-group mt-4">
+            <div class="col-sm-12 col-xs-12 "  >
+                <p class="logo3 text-center">Select the event place</p>
+                <input id="pac-input" style="margin-left: -110px;" size="4" class="rounded mt-5 controls logo2" type="text" placeholder=" Search Your Event Place here" required>   
+                <div id="map" style="height:300px;" class=" rounded"></div>
+            </div>
+        </div>
+        <div class="row shadow mx-auto">
+            <p class="logo3 justify-content-center ml-5 mt-4">Event Type </p>
+            <p class="logo2 justify-content-center ml-3">(you can choose multiple event types)</p>
+            <div class="col-sm-6 col-xs-6 col-md-6 justify-content-center">
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Technical"><i></i>Technical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Cultural"><i></i>Cultural</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Management"><i></i>Management</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Sports"><i></i>Sports</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Literary"><i></i>Literary</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Training"><i></i>Trainings</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Conference"><i></i>Conferences</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Seminar"><i></i>Seminar</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Workshop"><i></i>Workshop</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Symposium"><i></i>Symposium</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Youth Summit"><i></i>Youth Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Model United Nations"><i></i>Model United Nations</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="TEDx"><i></i>TEDx</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Summit"><i></i>Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Conclave"><i></i>Conclave</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Convention"><i></i>Convention</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Entrepreneurship Summit"><i></i>Entrepreneurship Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Medical"><i></i>Medical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Pharma"><i></i>Pharma</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Bio Medical"><i></i>Bio Medical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Online"><i></i>Online Events</label>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="eventdescription" class="logo1 logo2">Event Discription</label>
+                    <textarea class="form-control" id="eventdescription" rows="3" placeholder="Enter Brief Description about your event and terms and conditions"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="eventlist" class="logo1 logo2">list Events here <span class="logo2 h6">(Press <kbd class="btn-xs">comma</kbd> or <kbd class="btn-xs">enter</kbd> between each events)</span></label>
+                    <textarea class="form-control" id="eventlist" rows="5" placeholder="enter the list of items like (1.rc quadcopter racing 2.paper-presentation 3.web-development ...etc.,)"></textarea>
+                </div>                   
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+            <div class="col-sm-12">    
+                <div class="form-group">
+                    <label for="registrationfee" class="logo2">Registration Fee (INR)</label>
+                    <input type="number" class="form-control" id="registrationfee" name = "registrationfee" placeholder="enter registration amount in *(INR)*">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+            <div class="col-sm-12">    
+                <div class="form-group">
+                        <label for="deadline" class="logo2">Deadline Date for Registration</label>
+                        <input type="date" class="form-control" name = "deadline" id="deadline" >
+                </div>
+            </div>
+        </div>
+        <div class="row shadow ">
+                <p class=" logo3 justify-content-center ml-5 mt-4">Event Departments</p>
+                    <div class="col-sm-6 col-xs-6 col-md-6 justify-content-center">
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="CSE" ><i></i>CSE</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="IT"><i></i>IT</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="MCA"><i></i>MCA</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="ECE" ><i></i>ECE</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="EEE"><i></i>EEE</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="ECM"><i></i>ECM</label>
+                
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Design"><i></i>Design</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Aeronautical"><i></i>Aeronautical</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mechanics"><i></i>Applied Mechanics</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Aerospace" ><i></i>Aerospace</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Civil"><i></i>Civil</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Chemical"><i></i>Chemical</label>
+                    
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BBA"><i></i>BBA</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="MBA"><i></i>MBA</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Arts"><i></i>Arts</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Commerce" ><i></i>Commerce</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Law"><i></i>Law</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Media"><i></i>Media</label>
+                    
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Medical" ><i></i>Medical</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BioMedical"><i></i>BioMedical</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Pharmacy"><i></i>Pharmacy</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BioTechnology" ><i></i>BioTechnology</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Agricultural"><i></i>Agricultural</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Fashion"><i></i>Fashion</label>
+                    
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Instrumentation"><i></i>Instrumentation</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Telecommunication"><i></i>Tele Communication</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mechanical"><i></i>Mechanical</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Energy" ><i></i>Energy</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Industrial"><i></i>Industrial</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Automobile"><i></i>Automobile</label>
+                    
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Ocean" ><i></i>Ocean</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Metallurgy"><i></i>Metallurgy</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Marine"><i></i>Marine</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mining" ><i></i>Mining</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Material"><i></i>Material</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Physics"><i></i>Physics</label>
+                    
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Food"><i></i>Food Processing</label>
+                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Textile"><i></i>Textile</label>
+                    </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+                <div class="col-sm-12">    
+                    <div class="form-group">
+                            <label for="contactperson" class="logo1 logo2">contact person details</label>
+                            <textarea class="form-control" id="contactperson" rows="4" placeholder="Enter event coordinator contact details"></textarea>
+                    </div>
+                </div>
+        </div>
+        <div class="row justify-content-center mt-3 mx-auto shadow">
+                <div class="col-sm-12">    
+                    <div class="form-group">
+                            <label for="registrationlink" class="logo1 logo2">Event Registration link </label>
+                            <input type="text" class="form-control" id="registrationlink" name = "registrationlink" placeholder="enter registration link for the event">
+                    </div>
+                </div>
+        </div>
+        <div class="row justify-content-center mt-3">   
+                <label for="contactperson" class="logo1 logo2">Upload event image</label>                 
+                <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                </div>                        
+         </div>
+        <div class="row justify-content-center mb-5 mt-2">
+            <div class="col mx-auto">
+                <button class="form-control btn btn-block btn-warning logo1" id="submitevent">Create Event</button>
+            </div>
+        </div>
+
+    </div>  
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <script src="./script/script.js"></script>
+    <script src="./script/create.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBauvTptxZ3JmZtyGFx-7DTffTuXG8Q490&libraries=places&callback=initAutocomplete"
+         async defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
