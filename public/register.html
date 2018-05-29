@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>doodleHub</title>
+    <script src="https://use.fontawesome.com/0e2c340454.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- hearder section -->
+    <div class="row header shadow fixed-top justify-content-around">
+      
+        <div class="col logo align-content-center">
+            <a style="text-decoration: none;" href="./index.html">
+              <span class="logo1">d<i class="fa fa-cog fa-spin fa-1x" aria-hidden="true"></i>
+              <span class="sr-only">o</span><i class="fa fa-cog fa-spin fa-1x" aria-hidden="true"></i>
+              <span class="sr-only">o</span>dle</span><span class="logo2">Hub</span>
+            </a>
+        </div>
+      
+    </div>
+    <!-- body section -->
+    <div class="row bodysection justify-content-center">
+        <div class="col-md-8 shadow">
+          <div style="text-align: center; font-size: 20px;">
+              <label class="logo1 logo2 centered">SignUp Form</label>
+          </div>
+          <!-- error message from firebase will be thrown here -->
+          <div class = "errorMessage alert-danger"></div>
+          <div class = "message alert-success"></div>
+                <form class="signUpForm">
+                        <div class="form-row">
+                          <div class="col mb-3">
+                            <label for="validationCustom01">First name</label>
+                            <input type="text" class="form-control" name="fname" id="validationCustom01" placeholder="First name" required>                              
+                            <div class="fnamefeedback"></div>
+                          </div>
+                          <div class="col mb-3">
+                            <label for="validationCustom02">Last name</label>
+                            <input type="text" class="form-control" name = "lname" id="validationCustom02" placeholder="Last name"  required>
+                            <div class="lnamefeedback"></div>
+                          </div>
+                        </div>
+                          <div class="form-row">
+                            <label for="validationemailid">email-id</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                              </div>
+                              <input type="text" class="form-control" name = "email" id="validationemailid" placeholder="email-id" aria-describedby="inputGroupPrepend" required>
+                              <div class="emailfeedback"></div>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="col mb-3">
+                                <label for="validationpassword">Password</label>
+                                <input type="password" class="form-control" name="pwd0" id="validationpassword" placeholder="must hold special character"  required>
+                                <div class="pwd0feedback"></div>
+                              </div>
+                              <div class="col mb-3">
+                                <label for="validationpassword1">Confirm </label>
+                                <input type="password" class="form-control" name="pwd1" id="validationpassword1" placeholder="must same as password"  required>
+                                <div class="pwd1feedback"></div>
+                              </div>
+                            </div>
+
+                        
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">City</label>
+                            <input type="text" class="form-control" name = "city" id="validationCustom03" placeholder="City" required>
+                            <div class="cityfeedback"></div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom04">College</label>
+                            <input type="text" class="form-control" name = "college" id="validationCustom04" placeholder="your college" required>
+                            <div class="collegefeedback"></div>
+                          </div>
+                  
+                        </div>
+                        <div class="form-row">
+                            <label for="validationdob">Date of Birth</label>
+                            <input type="date" class="form-control" name = "dob" id="validationdob" placeholder="Date of Birth">
+                            <div class="dobfeedback"></div>
+                          </div>
+
+                          <div class="form-row">
+                              <div class="col mb-3">
+                                <label for="status">Mobile Number</label>
+                                <input type="text" class="form-control" name = "mobile" id="mobile" placeholder="Mobile" required>
+                                <div class="statusfeedback"></div>
+                              </div>
+                            </div>
+                          
+                        <div class="form-group">
+                          <div class="form-check">
+                            <input class="form-check-input" name="check" type="checkbox" value="checked" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                              Agree to <a class="btn-link btn-info" href="#"> terms and conditions </a>
+                            </label>
+                            <div class="checkfeedback"></div>
+                          </div>
+                        </div>
+                        <button class="btn btn-warning logo1" style="margin-bottom: 10px;" type="submit" >SignUP</button>
+                </form>                       
+        </div>
+    </div>
+  </div>
+
+  <!-- ****************All Modals down here ******************** -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Account validation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Account successfully created, please check your email id for verification <a class = "btn btn-outline-warning" href="./index.html">click here!</a> to go to doodleHub home page.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ******************* modal for processing ************************* -->
+  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title mx-auto" id="messageModalLabel"></h4>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <script src="./script/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>

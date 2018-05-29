@@ -1,0 +1,255 @@
+body{
+    font-family: 'Questrial', sans-serif;
+    width:100%;
+    /* height: 200em; */
+    background: #ffffff;;
+}
+
+.decide-icon{
+    visibility: hidden;
+}
+@media screen and (max-width: 550px){ 
+    .decide-icon{
+        visibility: visible;
+    }      
+}
+.test{
+    background: rgb(20, 2, 2);
+    height: 10em;
+}
+.test1{
+    background:rgb(77, 68, 199);
+    height: 10em;
+}
+
+/* hearder styles */
+.header{
+    height:50px;
+    background:#039be5;
+}
+.logo3{
+    color:#039be5;
+    font-weight: bold;
+}
+
+.logo1{
+    font-family: inherit;
+    color:#ffff;
+    font-weight: bold;
+}
+.logo4{
+    font-family: inherit;
+    color:rgb(255, 255, 255);
+}
+.logo2{
+    font-family: inherit;
+    color:#FCCC32;
+}
+.logo{
+    text-align: center;
+    font-size: 30px;
+}
+.register{
+
+    text-align: left;
+
+
+}
+
+.loginbutton{
+    color:#ffff;
+    visibility: visible;
+    /* margin-left: 200px;     */
+}
+
+.loginbutton1{
+    visibility: hidden;
+}
+@media screen and (max-width:728px){           
+    .loginbutton{
+        visibility: hidden;
+    }
+    .loginbutton1{
+        visibility: visible;
+         /* margin-top: -30px; */
+    }
+
+}
+
+.login{
+    padding: 5px 0px 0px 0px; 
+    font-size: 10px;  
+    text-align: right;
+}
+@media screen and (max-width:728px){
+    .men{
+        margin-left:10px;
+        margin-top:5px;
+        max-width:30px;
+    }
+    .logo{
+        max-width: 200px;
+        margin-top:10px;
+        margin-left:50px;
+        text-align: center;
+        font-size: 20px;
+        
+    }
+    .login{
+        max-width:8px;
+        margin-right: 50px;
+        padding: 0px 0px 0px 0px; 
+        font-size: 10px;  
+        text-align: center;
+
+        
+    }
+
+    
+
+}
+
+
+
+/* left-pan styles */
+
+.bodysection{
+    margin-top: 70px;
+
+}
+
+
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+  }
+
+  #description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  #infowindow-content .title {
+    font-weight: bold;
+  }
+
+  #infowindow-content {
+    display: none;
+  }
+
+  #map #infowindow-content {
+    display: inline;
+  }
+
+  .pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+  }
+
+  #pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+  }
+
+  .pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+  }
+
+  .pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
+
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+  #title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+  }
+  #target {
+    width: 345px;
+  }
+
+
+
+  .multipleInput-container {
+    border:1px #ccc solid;
+    padding:1px;
+    padding-bottom:0;
+    cursor:text;
+    font-size:13px;
+    width:100%;
+    height: 75px;
+    overflow: auto;
+    background-color: white;
+  border-radius:3px;
+}
+
+.multipleInput-container input {
+    font-size:13px;
+    /*clear:both;*/
+    width:150px;
+    height:24px;
+    border:0;
+    margin-bottom:1px;
+    outline: none
+}
+
+.multipleInput-container ul {
+    list-style-type:none;
+    padding-left: 0px !important;
+}
+
+li.multipleInput-email {
+    float:left;
+    margin-right:2px;
+    margin-bottom:1px;
+    border:1px #BBD8FB solid;
+    padding:2px;
+    background:#F3F7FD;
+}
+
+.multipleInput-close {
+    width:16px;
+    height:16px;
+    background:url(close.png);
+    display:block;
+    float:right;
+    margin:0 3px;
+}
+.email_search{
+ width: 100% !important;
+}
+
+
+
+
+
+
+
