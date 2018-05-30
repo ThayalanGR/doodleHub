@@ -104,5 +104,5 @@ function initAutocomplete() {
               return $(this).hide();
          });
     };
-})( jQuery );
-$('#recipient_email').multipleInput();
+})( jQuery )
+$('#recipient_email').multipleInput()

@@ -184,6 +184,13 @@ document.querySelector('.createform').addEventListener('submit',(event)=> {
 
   let eventimage = event.target.eventimage.value
 
+ 
+  
+
+// validating event fields
+let value = '';
+value = validateEventFiled(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage)
+if(value == 'verified'){
   console.log(mapevent)
   console.log(eventname)
   console.log(eventcaption)
@@ -202,37 +209,191 @@ document.querySelector('.createform').addEventListener('submit',(event)=> {
   console.log(contactperson)
   console.log(registrationlink)
   console.log(eventimage)
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+if(value == 'notverified'){
+  // alert('not verified')
+}
 
   
 })
+// mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage
+let mapeventfeedback,eventnamefeedback,eventcaptionfeedback,collegefeedback,cityfeedback,statefeedback,countryfeedback,eventstartfeedback,eventendfeedback,eventtypefeedback,eventdescriptionfeedback,deadlinefeedback,eventlistfeedback,registrationfeefeedback,eventdepartmentfeedback,contactpersonfeedback,registrationlinkfeedback,uploadimagefeedback
+
+  mapeventfeedback = document.querySelector('.mapeventfeedback')
+  eventnamefeedback = document.querySelector('.eventnamefeedback')
+  eventcaptionfeedback = document.querySelector('.eventcaptionfeedback')
+  collegefeedback = document.querySelector('.collegefeedback')
+  cityfeedback = document.querySelector('.cityfeedback')
+  statefeedback = document.querySelector('.statefeedback')
+  countryfeedback = document.querySelector('.countryfeedback')
+  eventstartfeedback = document.querySelector('.eventstartfeedback')
+  eventendfeedback = document.querySelector('.eventendfeedback')
+  eventtypefeedback = document.querySelector('.eventtypefeedback')
+  eventdescriptionfeedback = document.querySelector('.eventdescriptionfeedback')
+  deadlinefeedback = document.querySelector('.deadlinefeedback')
+  eventlistfeedback = document.querySelector('.eventlistfeedback')
+  registrationfeefeedback = document.querySelector('.registrationfeefeedback')
+  eventdepartmentfeedback = document.querySelector('.eventdepartmentfeedback')
+  contactpersonfeedback = document.querySelector('.contactpersonfeedback')
+  registrationlinkfeedback = document.querySelector('.registrationlinkfeedback')
+  uploadimagefeedback = document.querySelector('.uploadimagefeedback')
+
+  uploadimagefeedback.textContent = ' you may uplaod event banner or image to attract more people'
+  registrationlinkfeedback.textContent = `you may enter registration link for you event(college website) or leave blank if you won't`
+  registrationfeefeedback.textContent = 'you may enter registration fees or ***if event is free enter fee as zero(0) (in number) ***'
+function validateEventFiled(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage){
+ 
+  if(mapevent == null || mapevent == ''){
+    mapeventfeedback.textContent = ' Mapping event place is mandatory, use search bar for select event place '
+    event.stopPropagation()
+    return 'notverified'
+  }else{
+    mapeventfeedback.textContent = ' Looks good!';
+  }
+  if(eventname == null || eventname == ''){
+    eventnamefeedback.textContent = ' Event name is mandatory '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventnamefeedback.textContent = ' Looks good!'
+  }
+  if(eventcaption == null || eventcaption == ''){
+    eventcaptionfeedback.textContent = ' Event Caption is mandatory, brief info about your event '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventcaptionfeedback.textContent = ' Looks good!'
+  }
+  if(college == null || college == ''){
+    collegefeedback.textContent = ' please enter college name or the organisation '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    collegefeedback.textContent = ' Looks good!'
+  }
+  if(city == null || city == ''){
+    cityfeedback.textContent = ' please enter event city '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    cityfeedback.textContent = ' Looks good!'
+  }
+  if(state == 'Choose...'){
+    statefeedback.textContent = ' please choose the state '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    statefeedback.textContent = ' Looks good!'
+  }
+  if(country == '' || country == null){
+    countryfeedback.textContent = ' please enter Country name'
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    countryfeedback.textContent = ' Looks good!'
+  }
+  if(eventstart == '' || eventstart == null){
+    eventstartfeedback.textContent = ' please Select starting date of the event'
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventstartfeedback.textContent = ' Looks good!'
+  }
+  if(eventend){
+    if(eventend < eventstart){
+      eventendfeedback.textContent = ' enter valid event ending date'
+      event.stopPropagation();      
+      return 'notverified'
+    }
+    else{
+      eventendfeedback.textContent = ' Looks good!'
+      
+    }
+  }else{
+    eventend = eventstart
+    eventendfeedback.textContent = 'you may enter ending date of the event'
+  }
+  if(eventtype == '' || eventtype == null){
+    eventtypefeedback.textContent = ' select atleast one event type '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventtypefeedback.textContent = ' Looks good!'
+  }
+  if(eventdescription == '' || eventdescription == null ){
+    eventdescriptionfeedback.textContent = ' please enter the brief discription of your event , it is mandatory '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventdescriptionfeedback.textContent = ' Looks good!'
+  }
+  if(eventdescription == '' || eventdescription == null ){
+    eventdescriptionfeedback.textContent = ' please enter the brief discription of your event , it is mandatory '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventdescriptionfeedback.textContent = ' Looks good!'
+  }
+
+  if(deadline){
+    if(deadline > eventend){
+      deadlinefeedback.textContent = ' deadline date is invalid ,please enter valid deadline date '
+      event.stopPropagation();      
+      return 'notverified'
+    }
+    else{
+      deadlinefeedback.textContent = ' Looks good!'
+      
+    }
+  }else{
+    deadlinefeedback.textContent = 'you may enter deadline date for registration'
+  }
+
+
+
+  if(listevent == '' || listevent == null ){
+    eventlistfeedback.textContent = ' please enter atleast one event and leave comma (,) between each events '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventlistfeedback.textContent = ' Looks good!'
+  }
+
+  if(registrationfee){
+    registrationfeefeedback.textContent = ' Looks good!'
+  }else{
+    registrationfeefeedback.textContent = 'you may enter registration fees or ***if event is free enter fee as zero(0) (in number) ***'
+  }
+
+
+  if(eventdept == '' || eventdept == null){
+    eventdepartmentfeedback.textContent = ' select atleast one event type '
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    eventdepartmentfeedback.textContent = ' Looks good!'
+  }
+
+  if(contactperson == '' || contactperson == null ){
+    contactpersonfeedback.textContent = ' please enter contact phone number or email id (event coordinator/event organiser)'
+    event.stopPropagation();
+    return 'notverified'
+  }else{
+    contactpersonfeedback.textContent = ' Looks good!'
+    uploadimagefeedback.textContent = ' you may uplaod event banner or image to attract more people'
+  }
+
+  if(registrationlink){
+    registrationlinkfeedback.textContent = ' Looks good!'
+    
+  }else{
+    registrationlinkfeedback.textContent = `you may enter registration link for you event(college website) or leave blank if you won't`
+  }
+
+  if(eventimage){
+    uploadimagefeedback.textContent = ' Looks good!'
+  }else{
+    uploadimagefeedback.textContent = ' you may uplaod event banner or image to attract more people'
+  }
+  return 'verified'
+}
