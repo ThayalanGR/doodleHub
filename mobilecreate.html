@@ -11,22 +11,27 @@
     <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
+    <form class="container createform">
+        <div class="row" >
             <div class="col-sm-12 col-xs-12 col-md-12">
                         <div class="form-group ">
                             <p class="h4 logo2 text-center">Create Event</p>
                             <p class="logo3 text-center">Event Details</p>
                             <label for="eventname" class=" logo2">Event Name</label>
-                            <input type="text" class="form-control input-sm" id="eventname" placeholder="Name of your event">
+                            <div class="eventnamefeedback alert-info"></div>
+                            <input type="text" class="form-control input-sm" name="eventname" id="eventname" placeholder="Name of your event">
                             <label for="eventcaption" class=" logo2">Event Caption</label>
-                            <input type="text" class="form-control" id="eventcaption" placeholder="caption of your event">
+                            <div class="eventcaptionfeedback alert-info"></div>
+                            <input type="text" class="form-control" name="eventcaption" id="eventcaption" placeholder="caption of your event">
                             <label for="college" class=" logo2">College Name or Place</label>
-                            <input type="text" class="form-control" id="college" placeholder="Name of the organization(Event) ">
+                            <div class="collegefeedback alert-info"></div>
+                            <input type="text" class="form-control" name="college" id="college" placeholder="Name of the organization(Event) ">
                             <label for="city" class=" logo2">City</label>
+                            <div class="cityfeedback alert-info"></div>
                             <input type="text" class="form-control" name = "city" id="city" placeholder="Name of the city ">
                             <label for="state" class=" logo2">State</label>
-                            <select id="state" class="form-control">
+                            <div class="statefeedback alert-info"></div>
+                            <select id="state" name="state" class="form-control">
                                 <option selected>Choose...</option>
                                 <option>Andhra Pradesh (AP)</option>
                                 <option>Arunachal Pradesh (AR)</option>
@@ -66,10 +71,13 @@
                                 <option>Pondicherry (PY)</option>
                             </select>
                             <label for="country" class=" logo2">Country</label>
+                            <div class="countryfeedback alert-info"></div>
                             <input type="text" class="form-control" name = "country" id="country" value="India">
                             <label for="eventstart" class="logo2">Start Date</label>
+                            <div class="eventstartfeedback alert-info"></div>
                             <input type="date" class="form-control" name = "eventstart" id="eventstart" placeholder="Event starting date">
                             <label for="eventend" class=" logo2">End Date</label>
+                            <div class="eventendfeedback alert-info"></div>
                             <input type="date" class="form-control" name = "eventend" id="eventend" placeholder="Event ending date">
                     </div>
             </div>
@@ -77,42 +85,45 @@
         <div class="row form-group mt-4">
             <div class="col-sm-12 col-xs-12 "  >
                 <p class="logo3 text-center">Select the event place</p>
-                <input id="pac-input" style="margin-left: -110px;" size="4" class="rounded mt-5 controls logo2" type="text" placeholder=" Search Your Event Place here" required>   
+                <div class="mapeventfeedback alert-warning"></div>
+                <input id="pac-input" style="margin-left: -110px;" size="4" name="mapevent" class="rounded mt-5 controls logo2" type="text" placeholder=" Search Your Event Place here">   
                 <div id="map" style="height:300px;" class=" rounded"></div>
             </div>
         </div>
         <div class="row shadow mx-auto">
             <p class="logo3 justify-content-center ml-5 mt-4">Event Type </p>
             <p class="logo2 justify-content-center ml-3">(you can choose multiple event types)</p>
+            <div class="eventtypefeedback alert-warning"></div>
             <div class="col-sm-6 col-xs-6 col-md-6 justify-content-center">
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Technical"><i></i>Technical</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Cultural"><i></i>Cultural</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Management"><i></i>Management</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Sports"><i></i>Sports</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Literary"><i></i>Literary</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Training"><i></i>Trainings</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Conference"><i></i>Conferences</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Seminar"><i></i>Seminar</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Workshop"><i></i>Workshop</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Symposium"><i></i>Symposium</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Youth Summit"><i></i>Youth Summit</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Model United Nations"><i></i>Model United Nations</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="TEDx"><i></i>TEDx</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Summit"><i></i>Summit</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Conclave"><i></i>Conclave</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Convention"><i></i>Convention</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Entrepreneurship Summit"><i></i>Entrepreneurship Summit</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Medical"><i></i>Medical</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Pharma"><i></i>Pharma</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Bio Medical"><i></i>Bio Medical</label>
-                            <label class="checkbox form-text"><input type="checkbox" name="cbFestType[]" value="Online"><i></i>Online Events</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Technical"><i></i>Technical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Cultural"><i></i>Cultural</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Management"><i></i>Management</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Sports"><i></i>Sports</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Literary"><i></i>Literary</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Training"><i></i>Trainings</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Conference"><i></i>Conferences</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Seminar"><i></i>Seminar</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Workshop"><i></i>Workshop</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Symposium"><i></i>Symposium</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Youth Summit"><i></i>Youth Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Model United Nations"><i></i>Model United Nations</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="TEDx"><i></i>TEDx</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Summit"><i></i>Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Conclave"><i></i>Conclave</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Convention"><i></i>Convention</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Entrepreneurship Summit"><i></i>Entrepreneurship Summit</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Medical"><i></i>Medical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Pharma"><i></i>Pharma</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Bio Medical"><i></i>Bio Medical</label>
+                            <label class="checkbox form-text"><input type="checkbox" name="eventtype[]" value="Online"><i></i>Online Events</label>
             </div>
         </div>
         <div class="row justify-content-center mt-3 mx-auto shadow">
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="eventdescription" class="logo1 logo2">Event Discription</label>
-                    <textarea class="form-control" id="eventdescription" rows="3" placeholder="Enter Brief Description about your event and terms and conditions"></textarea>
+                    <div class="eventdescriptionfeedback alert-info"></div>
+                    <textarea class="form-control" name="eventdescription" id="eventdescription" rows="3" placeholder="Enter Brief Description about your event and terms and conditions"></textarea>
                 </div>
             </div>
         </div>
@@ -120,7 +131,8 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="eventlist" class="logo1 logo2">list Events here <span class="logo2 h6">(Press <kbd class="btn-xs">comma</kbd> or <kbd class="btn-xs">enter</kbd> between each events)</span></label>
-                    <textarea class="form-control" id="eventlist" rows="5" placeholder="enter the list of items like (1.rc quadcopter racing 2.paper-presentation 3.web-development ...etc.,)"></textarea>
+                    <div class="eventlistfeedback alert-info"></div>
+                    <textarea class="form-control" name="eventlist" id="eventlist" rows="5" placeholder="enter the list of items like (1.rc quadcopter racing 2.paper-presentation 3.web-development ...etc.,)"></textarea>
                 </div>                   
             </div>
         </div>
@@ -128,6 +140,7 @@
             <div class="col-sm-12">    
                 <div class="form-group">
                     <label for="registrationfee" class="logo2">Registration Fee (INR)</label>
+                    <div class="registrationfeefeedback alert-info"></div>
                     <input type="number" class="form-control" id="registrationfee" name = "registrationfee" placeholder="enter registration amount in *(INR)*">
                 </div>
             </div>
@@ -137,63 +150,66 @@
                 <div class="form-group">
                         <label for="deadline" class="logo2">Deadline Date for Registration</label>
                         <input type="date" class="form-control" name = "deadline" id="deadline" >
+                        <div class="deadlinefeedback alert-info"></div>
                 </div>
             </div>
         </div>
         <div class="row shadow ">
                 <p class=" logo3 justify-content-center ml-5 mt-4">Event Departments</p>
+                <div class="eventdepartmentfeedback alert-warning"></div>
                     <div class="col-sm-6 col-xs-6 col-md-6 justify-content-center">
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="CSE" ><i></i>CSE</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="IT"><i></i>IT</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="MCA"><i></i>MCA</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="ECE" ><i></i>ECE</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="EEE"><i></i>EEE</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="ECM"><i></i>ECM</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="CSE" ><i></i>CSE</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="IT"><i></i>IT</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="MCA"><i></i>MCA</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="ECE" ><i></i>ECE</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="EEE"><i></i>EEE</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="ECM"><i></i>ECM</label>
                 
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Design"><i></i>Design</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Aeronautical"><i></i>Aeronautical</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mechanics"><i></i>Applied Mechanics</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Aerospace" ><i></i>Aerospace</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Civil"><i></i>Civil</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Chemical"><i></i>Chemical</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Design"><i></i>Design</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Aeronautical"><i></i>Aeronautical</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Mechanics"><i></i>Applied Mechanics</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Aerospace" ><i></i>Aerospace</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Civil"><i></i>Civil</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Chemical"><i></i>Chemical</label>
                     
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BBA"><i></i>BBA</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="MBA"><i></i>MBA</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Arts"><i></i>Arts</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Commerce" ><i></i>Commerce</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Law"><i></i>Law</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Media"><i></i>Media</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="BBA"><i></i>BBA</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="MBA"><i></i>MBA</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Arts"><i></i>Arts</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Commerce" ><i></i>Commerce</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Law"><i></i>Law</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Media"><i></i>Media</label>
                     
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Medical" ><i></i>Medical</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BioMedical"><i></i>BioMedical</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Pharmacy"><i></i>Pharmacy</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="BioTechnology" ><i></i>BioTechnology</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Agricultural"><i></i>Agricultural</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Fashion"><i></i>Fashion</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Medical" ><i></i>Medical</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="BioMedical"><i></i>BioMedical</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Pharmacy"><i></i>Pharmacy</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="BioTechnology" ><i></i>BioTechnology</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Agricultural"><i></i>Agricultural</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Fashion"><i></i>Fashion</label>
                     
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Instrumentation"><i></i>Instrumentation</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Telecommunication"><i></i>Tele Communication</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mechanical"><i></i>Mechanical</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Energy" ><i></i>Energy</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Industrial"><i></i>Industrial</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Automobile"><i></i>Automobile</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Instrumentation"><i></i>Instrumentation</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Telecommunication"><i></i>Tele Communication</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Mechanical"><i></i>Mechanical</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Energy" ><i></i>Energy</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Industrial"><i></i>Industrial</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Automobile"><i></i>Automobile</label>
                     
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Ocean" ><i></i>Ocean</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Metallurgy"><i></i>Metallurgy</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Marine"><i></i>Marine</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Mining" ><i></i>Mining</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Material"><i></i>Material</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Physics"><i></i>Physics</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Ocean" ><i></i>Ocean</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Metallurgy"><i></i>Metallurgy</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Marine"><i></i>Marine</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Mining" ><i></i>Mining</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Material"><i></i>Material</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Physics"><i></i>Physics</label>
                     
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Food"><i></i>Food Processing</label>
-                        <label class="checkbox"><input type="checkbox" name="cbFestDep[]" value="Textile"><i></i>Textile</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Food"><i></i>Food Processing</label>
+                        <label class="checkbox"><input type="checkbox" name="eventdept[]" value="Textile"><i></i>Textile</label>
                     </div>
         </div>
         <div class="row justify-content-center mt-3 mx-auto shadow">
                 <div class="col-sm-12">    
                     <div class="form-group">
                             <label for="contactperson" class="logo1 logo2">contact person details</label>
-                            <textarea class="form-control" id="contactperson" rows="4" placeholder="Enter event coordinator contact details"></textarea>
+                            <div class="contactpersonfeedback alert-info"></div>
+                            <textarea class="form-control" name="contactperson" id="contactperson" rows="4" placeholder="Enter event coordinator contact details"></textarea>
                     </div>
                 </div>
         </div>
@@ -201,29 +217,32 @@
                 <div class="col-sm-12">    
                     <div class="form-group">
                             <label for="registrationlink" class="logo1 logo2">Event Registration link </label>
-                            <input type="text" class="form-control" id="registrationlink" name = "registrationlink" placeholder="enter registration link for the event">
+                            <div class="registrationlinkfeedback alert-info"></div>
+                            <input type="url" class="form-control" id="registrationlink" name = "registrationlink" placeholder="enter registration link for the event">
                     </div>
                 </div>
         </div>
         <div class="row justify-content-center mt-3">   
-                <label for="contactperson" class="logo1 logo2">Upload event image</label>                 
-                <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Upload</span>
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
-                </div>                        
-         </div>
+                <div class="uploadimagefeedback alert-info"></div> 
+                <label for="eventimage" class="logo1 logo2">Upload event image</label>                 
+                <input type="file" id="eventimage" name="eventimage" >
+        </div>                       
         <div class="row justify-content-center mb-5 mt-2">
             <div class="col mx-auto">
-                <button class="form-control btn btn-block btn-warning logo1" id="submitevent">Create Event</button>
+                <button type="submit" class="form-control btn btn-block btn-warning logo1" id="submitevent">Create Event</button>
             </div>
         </div>
-
-    </div>  
+ 
+    </form>  
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title mx-auto" id="messageModalLabel"></h4>
+            </div>
+          </div>
+        </div>
+    </div>
     <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -231,8 +250,9 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
-    <script src="./script/script.js"></script>
-    <script src="./script/create.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-storage.js"></script>
+    <!-- <script src="./script/script.js"></script> -->
+    <script src="./script/create1.js"></script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBauvTptxZ3JmZtyGFx-7DTffTuXG8Q490&libraries=places&callback=initAutocomplete"
          async defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

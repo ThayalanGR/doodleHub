@@ -84,23 +84,25 @@ document.querySelector('.signUpForm').addEventListener('submit',(event)=> {
         // console.log(userId)
         //send data to firebase database
         // Get a reference to the database service
-        var database = firebase.database();
+        var database = firebase.database()
         // pushing data into database
         var name = fname + ' ' + lname 
         let imageUrl = 'default'
-        writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, mobile)
+        let thumb = 'default'
+        writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, mobile, thumb)
 
-        function writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, mobile) {
+        function writeUserData(userId, name, email, imageUrl, pwd0, city, dob, college, mobile, thumb) {
           // console.log(userId);
           firebase.database().ref('Users/' + userId).set({
             username: name,
             email: email,
-            profile_picture : imageUrl,
+            image : imageUrl,
+            thumbimage: thumb,
             password : pwd0,
             city : city,
             dob : dob,
             college : college,
-            mobile : mobile
+            phone : mobile
           })
         }
         sendEmailVerification()
@@ -146,7 +148,9 @@ document.querySelector('.signUpForm').addEventListener('submit',(event)=> {
   if(value == 'notverified'){
     let feedBack = document.querySelector('.errorMessage')
       feedBack.textContent = 'something wrong with form please check the details'
-  }      })// end of main function
+  }     
+
+})// end of main function
 
 
 //another function

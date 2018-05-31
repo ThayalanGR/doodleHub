@@ -96,8 +96,8 @@ function initAutocomplete() {
                         }                         
                         // append to list of emails with remove button
                         $list.append($('<li class="multipleInput-email"><input type="hidden" name="listevent[]" type="text" value="' + val + '"> <span>' + val + '</span></li>')
-                             .append($('<a href="#" class="multipleInput-close" title="Remove"><i class="fa fa-close"></i></a>')
-                                  .click(function(e) {
+                             .append($('<a href="#" class="multipleInput-close" title="Remove"> <i class="fa fa-close"></i></a>')
+                                  .click(function(e) {"><i class="
                                        $(this).parent().remove();
                                        e.preventDefault();
                                   })
@@ -141,6 +141,10 @@ document.querySelector('.createform').addEventListener('submit',(event)=> {
   let eventstart = event.target.eventstart.value
 
   let eventend = event.target.eventend.value
+  if (eventend == '') 
+  {
+    eventend = eventstart
+  }
 
   // let eventtype = event.target.eventtype.value
   let eventtypecheckbox = document.getElementsByName('eventtype[]')
@@ -181,16 +185,75 @@ document.querySelector('.createform').addEventListener('submit',(event)=> {
   let contactperson = event.target.contactperson.value
 
   let registrationlink = event.target.registrationlink.value
-
-  let eventimage = event.target.eventimage.value
-
  
   
+  let eventimagefile =  event.target.eventimage.files[0]
+  let eventimage = eventimagefile.name
+  let latitude
+  let longitude
+  var geocoder = new google.maps.Geocoder()
+  var address = mapevent
 
 // validating event fields
 let value = '';
-value = validateEventFiled(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage)
+value = validateEventField(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage)
 if(value == 'verified'){
+  $("#messageModalLabel").html(`<div class="mx-auto">please wait !</div><i class="fa fa-cog fa-spin"></i>`, ['center', 'info'])
+  $("#messageModal").modal('show')
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var userId = user.uid
+      // console.log(userId)
+      //send data to firebase database
+      // Get a reference to the database service
+      var database = firebase.database()
+      var storageService = firebase.storage();
+      var storageRef = storageService.ref();
+      createEvent(mapevent,latitude,longitude,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage)
+
+      function createEvent(mapevent,latitude,longitude,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage) {
+        // console.log(userId);
+        geocoder.geocode( { 'address': address}, function(results, status) {
+  
+          if (status == google.maps.GeocoderStatus.OK) {
+            latitude = results[0].geometry.location.lat()
+            longitude = results[0].geometry.location.lng()
+          }
+          // Create a new post reference with an auto-generated id
+          let postListRef =  firebase.database().ref('Events/')
+          var newPostRef = postListRef.push();
+          newPostRef.set({
+            userId : userId,
+            latitude : latitude,
+            longitude : longitude,
+            eventname : eventname,
+            eventcaption : eventcaption,
+            college : college,
+            city : city,
+            state : state,
+            country : country,
+            eventstart : eventstart,
+            eventend : eventend,
+            eventtype : eventtype,
+            eventdescription : eventdescription,
+            deadline : deadline,
+            listevent : listevent,
+            registrationfee : registrationfee,
+            eventdept : eventdept,
+            contactperson : contactperson,
+            registrationlink : registrationlink,
+            eventimage : eventimage
+            }) 
+          storageRef.child(`eventimage/${eventimage}`).put(eventimagefile)
+            
+        })
+      }
+      $("#messageModalLabel").html(`Event Successfully created  <button type="button" class="btn btn-warning logo1" data-dismiss="modal">Close</button>`)
+      clearForm()
+    }
+  })
   console.log(mapevent)
   console.log(eventname)
   console.log(eventcaption)
@@ -213,8 +276,7 @@ if(value == 'verified'){
 if(value == 'notverified'){
   // alert('not verified')
 }
-
-  
+ 
 })
 // mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage
 let mapeventfeedback,eventnamefeedback,eventcaptionfeedback,collegefeedback,cityfeedback,statefeedback,countryfeedback,eventstartfeedback,eventendfeedback,eventtypefeedback,eventdescriptionfeedback,deadlinefeedback,eventlistfeedback,registrationfeefeedback,eventdepartmentfeedback,contactpersonfeedback,registrationlinkfeedback,uploadimagefeedback
@@ -237,11 +299,10 @@ let mapeventfeedback,eventnamefeedback,eventcaptionfeedback,collegefeedback,city
   contactpersonfeedback = document.querySelector('.contactpersonfeedback')
   registrationlinkfeedback = document.querySelector('.registrationlinkfeedback')
   uploadimagefeedback = document.querySelector('.uploadimagefeedback')
-
   uploadimagefeedback.textContent = ' you may uplaod event banner or image to attract more people'
   registrationlinkfeedback.textContent = `you may enter registration link for you event(college website) or leave blank if you won't`
   registrationfeefeedback.textContent = 'you may enter registration fees or ***if event is free enter fee as zero(0) (in number) ***'
-function validateEventFiled(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage){
+function validateEventField(mapevent,eventname,eventcaption,college,city,state,country,eventstart,eventend,eventtype,eventdescription,deadline,listevent,registrationfee,eventdept,contactperson,registrationlink,eventimage){
  
   if(mapevent == null || mapevent == ''){
     mapeventfeedback.textContent = ' Mapping event place is mandatory, use search bar for select event place '
@@ -327,13 +388,6 @@ function validateEventFiled(mapevent,eventname,eventcaption,college,city,state,c
   }else{
     eventdescriptionfeedback.textContent = ' Looks good!'
   }
-  if(eventdescription == '' || eventdescription == null ){
-    eventdescriptionfeedback.textContent = ' please enter the brief discription of your event , it is mandatory '
-    event.stopPropagation();
-    return 'notverified'
-  }else{
-    eventdescriptionfeedback.textContent = ' Looks good!'
-  }
 
   if(deadline){
     if(deadline > eventend){
@@ -396,4 +450,22 @@ function validateEventFiled(mapevent,eventname,eventcaption,college,city,state,c
     uploadimagefeedback.textContent = ' you may uplaod event banner or image to attract more people'
   }
   return 'verified'
+}
+
+function clearForm(){
+  event.target.mapevent.value = ''
+  event.target.eventname.value = ''
+  event.target.eventcaption.value = ''
+  event.target.college.value = ''
+  event.target.city.value = ''
+  event.target.state.value = ''
+  event.target.country.value = ''
+  event.target.eventstart.value = ''
+  event.target.eventend.value = ''
+  event.target.eventdescription.value = ''
+  event.target.deadline.value = ''
+  event.target.registrationfee.value = ''
+  event.target.contactperson.value = ''
+  event.target.registrationlink.value = ''
+  event.target.eventimage.value = ''
 }
